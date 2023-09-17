@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+
+    </head>
+    <body>
+        <h1>Order a Pizza</h1>
+        <form>
+            <div> 
+                <label>Name on Order</label>
+                <input type="text"/>
+            </div>
+            <div>
+                <label>Toppings:</label>
+                <input id="topping_1" type="checkbox" name="PizzaTopping1" value="Cheese">
+                <label for="topping_1">Cheese</label>
+
+                <input id="topping_2" type="checkbox" name="PizzaTopping2" value="Pepperoni">
+                <label for="topping_2">Pepperoni</label>
+
+                <input id="topping_3" type="checkbox" name="PizzaTopping3" value="Mushrooms">
+                <label for="topping_3">Mushrooms</label>
+            </div>
+            <div>
+                <label>Crust</label>
+
+                <input type="radio" id="crust_1" name="PizzaCrust" value="Regular">
+                <label for="crust_1">Regular</label>
+                <input type="radio" id="crust_2" name="PizzaCrust" value="Gluten-Free">
+                <label for="crust_2">Gluten-Free</label>
+            </div>
+            <div>
+                <input type="submit" value="Order Now!"/>
+            </div>
+        </form>
+    </body>
+</html>
