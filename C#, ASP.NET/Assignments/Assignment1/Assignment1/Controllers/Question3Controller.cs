@@ -14,7 +14,7 @@ namespace Assignment1.Controllers
         /// <example> POST api/question3</example>
         /// </summary>
         /// <returns> "Hello World!" </returns>
-        public string Get()
+        public string Post()
         {
             return "Hello World!";
         }
