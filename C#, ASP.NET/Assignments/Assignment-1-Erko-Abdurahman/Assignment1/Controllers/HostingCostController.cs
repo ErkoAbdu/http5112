@@ -11,7 +11,7 @@ namespace Assignment1.Controllers
     {
         /// <summary>
         /// Method returns 3 strings that have the fortnights total and how much per, as well as total tax, and the final total
-        /// <example> POST api/question6/0</example>
+        /// <example> POST api/hostingcost/0</example>
         /// </summary>
         /// <returns> "1 fortnights at $5.50/FN = $5.50 CAD". "HST 13% = $0.72 CAD", "Total = $6.22 CAD" </returns>
         double perNight = 5.50;

@@ -11,7 +11,7 @@ namespace Assignment1.Controllers
     {
         /// <summary>
         /// This method returns 2 strings with the inputed number between them when receiving a get request
-        /// <example> POST api/question4/15</example>
+        /// <example> POST api/greetingto/15</example>
         /// </summary>
         /// <returns>("Greetings to 15 people!</returns>
         public string Get(int id)

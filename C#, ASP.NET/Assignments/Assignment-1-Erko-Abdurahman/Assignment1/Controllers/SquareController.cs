@@ -11,7 +11,7 @@ namespace Assignment1.Controllers
     {
         /// <summary>
         /// Method returns integer squared when receiving a get request
-        ///<example> POST api/question2/5</example>
+        ///<example> POST api/square/5</example>
         /// </summary>
         /// <returns>(id * id)</returns>
         public int Get(int id)

@@ -11,7 +11,7 @@ namespace Assignment1.Controllers
     {
         /// <summary>
         /// This method returns a string when receiving a get request
-        /// <example> POST api/question3</example>
+        /// <example> POST api/greeting</example>
         /// </summary>
         /// <returns> "Hello World!" </returns>
         public string Post()
