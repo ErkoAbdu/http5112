@@ -14,7 +14,7 @@ namespace Assignment1.Controllers
         /// <example> POST api/numbermachine/15</example>
         /// </summary>
         /// <returns> ((15/5) * 20 + 4 - 9) = 55 </returns>
-        public int Get (int id)
+        public double Get (double id)
         {
             return ((id / 5) * 20 + 4 - 9);
         }
