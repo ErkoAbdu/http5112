@@ -13,7 +13,7 @@ SELECT * FROM `stock_items` WHERE category = "Piscine" AND inventory <=24
 SELECT * FROM `stock_items` WHERE item LIKE "%cage"
 --selects all from stock items where the item has the word cage in it
 --B
-SELECT * FROM `employees` WHERE first_name LIKE "f%";
+SELECT first_name, last_name, id, role FROM `employees` WHERE first_name LIKE "f%";
 --selects all from employees where the first name starts with an f
 
 -- 3
