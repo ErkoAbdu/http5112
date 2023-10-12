@@ -1,0 +1,107 @@
+-- phpMyAdmin SQL Dump
+-- version 5.1.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Oct 04, 2021 at 08:10 PM
+-- Server version: 10.4.20-MariaDB
+-- PHP Version: 7.4.22
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `pet_store_demo`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sales`
+--
+
+CREATE TABLE `sales` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `date` date DEFAULT current_timestamp(),
+  `item` int(4) UNSIGNED NOT NULL COMMENT 'FK for stock_items',
+  `employee` int(3) UNSIGNED DEFAULT NULL COMMENT 'FK for employees'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Pet Store Sales Table';
+
+--
+-- Dumping data for table `sales`
+--
+
+INSERT INTO `sales` (`id`, `date`, `item`, `employee`) VALUES
+(21000, '2021-06-09', 1002, 111),
+(21001, '2021-06-09', 1003, 111),
+(21002, '2021-06-09', 1004, 111),
+(21003, '2021-06-10', 1005, 100),
+(21004, '2021-06-10', 1011, 114),
+(21005, '2021-06-11', 1012, 111),
+(21006, '2021-06-11', 1002, 111),
+(21007, '2021-06-12', 1010, 114),
+(21008, '2021-06-12', 1009, 114),
+(21009, '2021-06-12', 1005, 111),
+(21010, '2021-06-12', 1017, 114),
+(21011, '2021-06-12', 1018, 114),
+(21012, '2021-06-12', 1014, 100),
+(21013, '2021-06-13', 1003, 112),
+(21014, '2021-06-15', 1004, 112),
+(21015, '2021-06-13', 1005, 112),
+(21016, '2021-06-13', 1002, 111),
+(21017, '2021-06-14', 1019, 114),
+(21018, '2021-06-14', 1020, 112),
+(21019, '2021-06-15', 1014, 111),
+(21020, '2021-06-15', 1011, 114),
+(21021, '2021-06-15', 1004, 114),
+(21022, '2021-06-15', 1009, 112),
+(21023, '2021-06-16', 1019, 100),
+(21024, '2021-06-16', 1018, 111),
+(21025, '2021-06-16', 1014, 114),
+(21026, '2021-06-16', 1010, 111),
+(21027, '2021-06-17', 1003, 114),
+(21028, '2021-06-17', 1005, 114),
+(21029, '2021-06-17', 1014, 112),
+(21030, '2021-06-17', 1011, 112),
+(21031, '2021-06-18', 1020, 114),
+(21032, '2021-06-18', 1004, 111),
+(21033, '2021-06-18', 1006, 114),
+(21034, '2021-06-19', 1014, 112),
+(21035, '2021-06-19', 1011, 112),
+(21036, '2021-06-19', 1020, 111),
+(21037, '2021-06-20', 1007, 114),
+(21038, '2021-06-20', 1117, 114),
+(21039, '2021-06-20', 1020, 112),
+(21040, '2021-06-20', 1008, 111);
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `sales`
+--
+ALTER TABLE `sales`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `sales`
+--
+ALTER TABLE `sales`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21041;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
