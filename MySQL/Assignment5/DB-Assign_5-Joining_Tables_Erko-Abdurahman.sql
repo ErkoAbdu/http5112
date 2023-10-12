@@ -48,7 +48,7 @@ WHERE e.first_name = "Farud" AND e.last_name = "Said"
 ORDER BY s.date;
 -- NULL in item, price, and category caused by typo with airpump sold on "2021-06-20" item id"1117"
 -- B NOT CORRECT MAYBE
-SELECT DISTINCT stock_items.item, stock_items.id, stock_items.price, stock_items.category
+SELECT DISTINCT sales.item, stock_items.id, stock_items.item,  stock_items.price, stock_items.category
 FROM stock_items 
 LEFT JOIN sales ON stock_items.id = sales.item  
 ORDER BY stock_items.id;
