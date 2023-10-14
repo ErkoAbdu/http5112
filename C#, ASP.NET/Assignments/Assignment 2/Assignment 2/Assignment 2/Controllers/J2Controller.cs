@@ -20,7 +20,7 @@ namespace Assignment_2.Controllers
         [HttpGet]
         public string GetTen(int dice1, int dice2)
         {
-            int ten = 0;
+            int count = 0;
             string message1 = "There is 1 total way to get to the sum of 10";
 
             for (int d1 = 1; d1 <= dice1; d1++)
@@ -29,11 +29,11 @@ namespace Assignment_2.Controllers
                 {
                     if (d1 + d2 == 10)
                     {
-                        ten = ten + 1;
+                        count = count + 1;
                     }                        
                 }
             }
-             if (ten == 1)
+             if (count == 1)
              {
                  return message1;
              }
@@ -41,7 +41,7 @@ namespace Assignment_2.Controllers
              {
                 string message2 = "There are ";
                 string message3 = " total ways to get the sum of 10";
-                string message4 = message2 + ten.ToString() + message3;
+                string message4 = message2 + count.ToString() + message3;
                 return message4;
              }
         }
