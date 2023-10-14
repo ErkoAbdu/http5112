@@ -16,7 +16,7 @@ namespace Assignment_2.Controllers
         /// <param name="dice1"></param>
         /// <param name="dice2"></param>
         /// <returns>"There is 1 total way to get to the sum of 10"</returns>
-        [Route("J2/DiceGame/{dice1}/{dice2}")]
+        [Route("api/J2/DiceGame/{dice1}/{dice2}")]
         [HttpGet]
         public string GetTen(int dice1, int dice2)
         {

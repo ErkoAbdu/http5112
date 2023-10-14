@@ -17,7 +17,7 @@ namespace Assignment_2.Controllers
         /// <param name="collision"></param>
         /// <returns>750 points</returns>
         //J1 Question Source:https://cemc.math.uwaterloo.ca/contests/computing/past_ccc_contests/2023/ccc/juniorEF.pdf
-        [Route("J1/{deliver}/{collision}")]
+        [Route("api/J1/{deliver}/{collision}")]
         [HttpGet]
         public int GetScore(int deliver, int collision)
         {
