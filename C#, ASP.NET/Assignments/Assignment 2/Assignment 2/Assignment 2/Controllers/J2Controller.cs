@@ -29,7 +29,7 @@ namespace Assignment_2.Controllers
                 {
                     if (d1 + d2 == 10)
                     {
-                        count = count + 1;
+                        count++;
                     }                        
                 }
             }

@@ -4,7 +4,7 @@
 -- A
 SELECT sales.date, stock_items.item
 FROM  sales 
-JOIN stock_items ON sales.item = stock_items.id
+INNER JOIN stock_items ON sales.item = stock_items.id
 WHERE sales.item = 1014;
 -- B
 SELECT sales.employee, stock_items.id, stock_items.category, stock_items.item
@@ -44,10 +44,10 @@ SELECT s.date, i.item, i.price, i.category, e.first_name
 FROM sales s 
 LEFT JOIN employees e ON s.employee = e.id  
 LEFT JOIN stock_items i ON s.item = i.id 
-WHERE e.first_name = "Farud" AND e.last_name = "Said"
+WHERE e.first_name = "Farud" 
 ORDER BY s.date;
 -- NULL in item, price, and category caused by typo with airpump sold on "2021-06-20" item id"1117"
--- B NOT CORRECT MAYBE
+-- B 
 SELECT DISTINCT sales.item, stock_items.id, stock_items.item,  stock_items.price, stock_items.category
 FROM stock_items 
 LEFT JOIN sales ON stock_items.id = sales.item  
