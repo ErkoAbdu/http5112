@@ -15,6 +15,7 @@ namespace Assignment_2.Controllers
         /// <param name="numPeople"></param>
         /// <exmaple>GET api/J3/2/yyy../..yyy</exmaple>
         /// <returns>Day 3</returns>
+        //J3 Question Source:https://cemc.math.uwaterloo.ca/contests/computing/past_ccc_contests/2023/ccc/juniorEF.pdf
         [Route("api/J3/{numPeople}/{array?}")]
         [HttpGet]
 
