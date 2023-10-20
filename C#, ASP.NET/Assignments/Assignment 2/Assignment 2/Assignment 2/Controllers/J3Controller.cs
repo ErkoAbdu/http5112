@@ -9,6 +9,12 @@ namespace Assignment_2.Controllers
 {
     public class J3Controller : ApiController
     {
+        /// <summary>
+        /// Was supposed to input number of people as well as their schedules and output the days (1-5) that majority of people can attend
+        /// </summary>
+        /// <param name="numPeople"></param>
+        /// <exmaple>GET api/J3/2/yyy../..yyy</exmaple>
+        /// <returns>Day 3</returns>
         [Route("api/J3/{numPeople}/{array?}")]
         [HttpGet]
 

@@ -11,10 +11,10 @@ namespace Assignment_2.Controllers
     {
         /// <summary>
         /// input number of sides on dice in dice1 and dice2. If d1 is <= dice1 and 2 increment by 1. If d1 + d2 = 10 increment by 1.
-        /// J2/DiceGame/5/5
         /// </summary>
         /// <param name="dice1"></param>
         /// <param name="dice2"></param>
+        /// <example>GET api/J2/DiceGame/5/5</example>
         /// <returns>"There is 1 total way to get to the sum of 10"</returns>
         [Route("api/J2/DiceGame/{dice1}/{dice2}")]
         [HttpGet]
