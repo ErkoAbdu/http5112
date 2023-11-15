@@ -1,0 +1,14 @@
+﻿@model School_Project.Models.Class
+@{
+    ViewBag.Title = "Show";
+}
+
+<h2>@Model.ClassCode - @Model.ClassName</h2>
+<ul>
+    <li>Class ID: @Model.ClassId</li>
+    <li>Teacher ID: @Model.TeacherId</li>
+    <li>Start Date: @Model.StartDate</li>
+    <li>Finish Date: @Model.FinishDate</li>
+</ul>
+
+<a href="/Class/List">Back to Class List</a>
