@@ -8,6 +8,10 @@
 <h3><a href="/Teacher/List">Teacher List</a></h3>
 <h3><a href="/Class/List">Class List</a></h3>
 
+<form action="/Student/List" method="GET">
+    <input type="text" name="SearchKey" />
+    <input type="submit" value="Search" />
+</form>
 
 @foreach (var student in Model)
 {

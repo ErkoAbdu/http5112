@@ -16,7 +16,8 @@ namespace School_Project.Controllers
         private SchoolDbContext School = new SchoolDbContext();
 
         [HttpGet]
-        public IEnumerable<Class> ListClasses()
+        [Route("api/ClassesData/ListClasses/{SearchKey?}")]
+        public IEnumerable<Class> ListClasses(string SearchKey=null)
         {
             //Create an instance of a connection
             MySqlConnection Conn = School.AccessDatabase();
@@ -28,7 +29,10 @@ namespace School_Project.Controllers
             MySqlCommand cmd = Conn.CreateCommand();
 
             //SQL QUERY
-            cmd.CommandText = "Select * from classes";
+            cmd.CommandText = "Select * from classes where lower(classname) like lower(@key)";
+
+            cmd.Parameters.AddWithValue("@key", "%" + SearchKey + "%");
+            cmd.Prepare();
 
             //Gather Result Set of Query into a variable
             MySqlDataReader ResultSet = cmd.ExecuteReader();

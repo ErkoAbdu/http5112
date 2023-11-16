@@ -21,7 +21,8 @@ namespace School_Project.Controllers
         /// <returns>List of Teachers (first and last names)</returns>
 
         [HttpGet]
-        public IEnumerable<Teacher> ListTeachers()
+        [Route("api/TeacherData/ListTeachers/{SearchKey?}")]
+        public IEnumerable<Teacher> ListTeachers(string SearchKey=null)
         {
             //Create an instance of a connection
             MySqlConnection Conn = School.AccessDatabase();
@@ -33,7 +34,10 @@ namespace School_Project.Controllers
             MySqlCommand cmd = Conn.CreateCommand();
 
             //SQL QUERY
-            cmd.CommandText = "Select * from teachers";
+            cmd.CommandText = "Select * from teachers where lower(teacherfname) like lower (@key) or lower(teacherlname) like lower (@key) or lower(concat(teacherfname, ' ', teacherlname)) like lower (@key)";
+
+            cmd.Parameters.AddWithValue("@key", "%" + SearchKey + "%");
+            cmd.Prepare();
 
             //Gather Result Set of Query into a variable
             MySqlDataReader ResultSet = cmd.ExecuteReader();
@@ -59,7 +63,7 @@ namespace School_Project.Controllers
                 NewTeacher.EmployeNumber = EmployeeNumber;
                 NewTeacher.HireDate = HireDate;
                 NewTeacher.Salary = Salary;
-                //Add the Author Name to the List
+                //Add the Teacher Name to the List
                 Teachers.Add(NewTeacher);
             }
             //Close the connection between the MySQL Database and the WebServer

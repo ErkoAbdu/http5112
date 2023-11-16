@@ -16,14 +16,14 @@ namespace School_Project.Controllers
             return View();
         }
         //GET: /Student/List
-        public ActionResult List()
+        public ActionResult List(string SearchKey=null)
         {
             StudentDataController controller = new StudentDataController();
-            IEnumerable<Student> Students = controller.ListStudents();
+            IEnumerable<Student> Students = controller.ListStudents(SearchKey);
             return View(Students);
         }
 
-        //GET: /Student/Show
+        //GET: /Student/Show/{id}
         public ActionResult Show(int id)
         {
             StudentDataController controller = new StudentDataController();
