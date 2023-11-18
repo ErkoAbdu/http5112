@@ -29,7 +29,7 @@ namespace School_Project.Controllers
             MySqlCommand cmd = Conn.CreateCommand();
 
             //SQL QUERY
-            cmd.CommandText = "Select * from classes where lower(classname) like lower(@key)";
+            cmd.CommandText = "Select * from classes where lower(classcode) like lower(@key) or lower(classname) like lower(@key) or lower(concat(classcode, ' ', classname)) like lower(@key)";
 
             cmd.Parameters.AddWithValue("@key", "%" + SearchKey + "%");
             cmd.Prepare();
