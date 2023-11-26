@@ -13,5 +13,7 @@ namespace School_Project.Models
         public string StudentLName;
         public string StudentNumber;
         public DateTime EnrolDate;
+
+        public Student() { }
     }
 }

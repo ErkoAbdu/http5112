@@ -6,9 +6,9 @@
 <div id="containershow">
     <h2>@Model.StudentFName @Model.StudentLName</h2>
     <ul>
-        <li>Student ID: @Model.StudentId</li>
-        <li>Student Number: @Model.StudentNumber</li>
-        <li>Date of Enrollment: @Model.EnrolDate</li>
+        <li><strong>Student ID: </strong>@Model.StudentId</li>
+        <li><strong>Student Number: </strong>@Model.StudentNumber</li>
+        <li><strong>Date of Enrollment: </strong>@Model.EnrolDate.ToString("MMMM-dd-yyyy")</li>
     </ul>
     <nav>
         <a class="navlink" href="/Student/List">Back to Student List</a>

@@ -15,5 +15,7 @@ namespace School_Project.Models
         public DateTime StartDate;
         public DateTime FinishDate;
         public string ClassName;
+
+        public Class() { }
     }
 }

@@ -133,5 +133,30 @@ namespace School_Project.Controllers
 
             Conn.Close();
         }
+
+        [HttpPost]
+        public void AddStudent([FromBody]Student NewStudent)
+        {
+            //Create an instance of a connection
+            MySqlConnection Conn = School.AccessDatabase();
+
+            //Open the connection between the web server and database
+            Conn.Open();
+
+            //Establish a new command (query) for our database
+            MySqlCommand cmd = Conn.CreateCommand();
+
+            //SQL QUERY
+            cmd.CommandText = "insert into students(studentfname, studentlname, studentnumber, enroldate) values(@StudentFName, @StudentLName, @StudentNumber, @EnrolDate)";
+            cmd.Parameters.AddWithValue("@StudentFName", NewStudent.StudentFName);
+            cmd.Parameters.AddWithValue("@StudentLName", NewStudent.StudentLName);
+            cmd.Parameters.AddWithValue("@StudentNumber", NewStudent.StudentNumber);
+            cmd.Parameters.AddWithValue("@EnrolDate", NewStudent.EnrolDate);
+            cmd.Prepare();
+
+            cmd.ExecuteNonQuery();
+
+            Conn.Close();
+        }
     }
 }

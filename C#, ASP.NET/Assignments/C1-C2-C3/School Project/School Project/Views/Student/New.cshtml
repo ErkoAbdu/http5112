@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "New";
+}
+
+<h2>New Student</h2>
+
+<form method="POST" action="/Student/Create">
+    <div>
+        <label for="StudentFName">Student First Name:</label>
+        <input type="text" id="StudentFName" name="StudentFName" />
+    </div>
+    <div>
+        <label for="StudentLName">Student Last Name:</label>
+        <input type="text" id="StudentLName" name="StudentLName" />
+    </div>
+    <div>
+        <label for="StudentNumber">Student Number:</label>
+        <input type="number" id="StudentNumber" name="StudentNumber" />
+    </div>
+    <div>
+        <label for="EnrolDate">Enrol Date:</label>
+        <input type="date" id="EnrolDate" name="EnrolDate" />
+    </div>
+    <div>
+        <input type="submit" value="Create Student"/>
+    </div>
+</form>

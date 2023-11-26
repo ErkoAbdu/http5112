@@ -52,7 +52,7 @@ namespace School_Project.Controllers
                 int TeacherId = (int)ResultSet["teacherid"];
                 string TeacherFName = (string)ResultSet["teacherfname"];
                 string TeacherLName = (string)ResultSet["teacherlname"];
-                string EmployeeNumber = (string)ResultSet["employeenumber"];
+                string EmployeeNumber = Convert.IsDBNull(ResultSet["employeenumber"]) ? null : (string)(ResultSet["employeenumber"]);
                 DateTime HireDate = (DateTime)ResultSet["hiredate"];
                 decimal Salary = (decimal)ResultSet["salary"];
 
@@ -98,7 +98,7 @@ namespace School_Project.Controllers
                 int TeacherId = (int)ResultSet["teacherid"];
                 string TeacherFName = (string)ResultSet["teacherfname"];
                 string TeacherLName = (string)ResultSet["teacherlname"];
-                string EmployeeNumber = (string)ResultSet["employeenumber"];
+                string EmployeeNumber = Convert.IsDBNull(ResultSet["employeenumber"]) ? null : (string)(ResultSet["employeenumber"]);
                 DateTime HireDate = (DateTime)ResultSet["hiredate"];
                 decimal Salary = (decimal)ResultSet["salary"];
 
@@ -133,6 +133,32 @@ namespace School_Project.Controllers
             //SQL QUERY
             cmd.CommandText = "Delete from teachers where teacherid = @id";
             cmd.Parameters.AddWithValue("@id", id);
+            cmd.Prepare();
+
+            cmd.ExecuteNonQuery();
+
+            Conn.Close();
+        }
+
+        [HttpPost]
+        public void AddTeacher([FromBody]Teacher NewTeacher)
+        {
+            //Create an instance of a connection
+            MySqlConnection Conn = School.AccessDatabase();
+
+            //Open the connection between the web server and database
+            Conn.Open();
+
+            //Establish a new command (query) for our database
+            MySqlCommand cmd = Conn.CreateCommand();
+
+            //SQL QUERY
+            cmd.CommandText = "insert into teachers(teacherfname, teacherlname, employeenumber, hiredate, salary) values(@TeacherFName, @TeacherLName, @EmployeeNumber, @HireDate, @Salary)";
+            cmd.Parameters.AddWithValue("@TeacherFName", NewTeacher.TeacherFName);
+            cmd.Parameters.AddWithValue("@TeacherLName", NewTeacher.TeacherLName);
+            cmd.Parameters.AddWithValue("@EmployeeNumber", NewTeacher.EmployeNumber);
+            cmd.Parameters.AddWithValue("@HireDate", NewTeacher.HireDate);
+            cmd.Parameters.AddWithValue("@Salary", NewTeacher.Salary);
             cmd.Prepare();
 
             cmd.ExecuteNonQuery();

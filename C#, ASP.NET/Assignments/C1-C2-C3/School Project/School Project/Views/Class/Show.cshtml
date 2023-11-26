@@ -8,10 +8,10 @@
 <div id="containershow">
     <h2>@Model.ClassCode - @Model.ClassName</h2>
     <ul>
-        <li>Class ID: @Model.ClassId</li>
-        <li>Teacher ID: @Model.TeacherId</li>
-        <li>Start Date: @Model.StartDate</li>
-        <li>Finish Date: @Model.FinishDate</li>
+        <li><strong>Class ID: </strong>@Model.ClassId</li>
+        <li><strong>Teacher ID: </strong>@Model.TeacherId</li>
+        <li><strong>Start Date: </strong>@Model.StartDate.ToString("MMMM-dd-yyyy")</li>
+        <li><strong>Finish Date: </strong>@Model.FinishDate.ToString("MMMM-dd-yyyy")</li>
     </ul>
     <nav>
         <a class="navlink" href="/Class/List">Back to Class List</a>

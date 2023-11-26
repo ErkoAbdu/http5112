@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -46,6 +47,33 @@ namespace School_Project.Controllers
         {
             ClassDataController controller = new ClassDataController();
             controller.DeleteClass(id);
+            return RedirectToAction("List");
+        }
+
+        //GET: /Class/New
+        public ActionResult New()
+        {
+
+            return View();
+        }
+
+        //POST: /Class/Create
+        [HttpPost]
+        public ActionResult Create(string ClassCode, int TeacherId, DateTime StartDate, DateTime FinishDate, string ClassName)
+        {
+            Debug.Write("IT WORKS");
+
+            Class NewClass = new Class();
+            NewClass.ClassCode = ClassCode;
+            NewClass.TeacherId = TeacherId;
+            NewClass.StartDate = StartDate;
+            NewClass.FinishDate = FinishDate;
+            NewClass.ClassName = ClassName;
+
+
+            ClassDataController controller = new ClassDataController();
+            controller.AddClass(NewClass);
+
             return RedirectToAction("List");
         }
     }

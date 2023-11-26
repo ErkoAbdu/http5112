@@ -136,5 +136,31 @@ namespace School_Project.Controllers
 
             Conn.Close();
         }
+
+        [HttpPost]
+        public void AddClass([FromBody] Class NewClass)
+        {
+            //Create an instance of a connection
+            MySqlConnection Conn = School.AccessDatabase();
+
+            //Open the connection between the web server and database
+            Conn.Open();
+
+            //Establish a new command (query) for our database
+            MySqlCommand cmd = Conn.CreateCommand();
+
+            //SQL QUERY
+            cmd.CommandText = "insert into classes(classcode, teacherid, startdate, finishdate, classname) values(@ClassCode, @TeacherId, @StartDate, @FinishDate, @ClassName)";
+            cmd.Parameters.AddWithValue("@ClassCode", NewClass.ClassCode);
+            cmd.Parameters.AddWithValue("@TeacherId", NewClass.TeacherId);
+            cmd.Parameters.AddWithValue("@StartDate", NewClass.StartDate);
+            cmd.Parameters.AddWithValue("@FinishDate", NewClass.FinishDate);
+            cmd.Parameters.AddWithValue("@ClassName", NewClass.ClassName);
+            cmd.Prepare();
+
+            cmd.ExecuteNonQuery();
+
+            Conn.Close();
+        }
     }
 }

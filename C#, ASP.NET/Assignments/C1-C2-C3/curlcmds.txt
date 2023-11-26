@@ -1,0 +1,7 @@
+curl -H "Content-Type: application/json" -d "{\"TeacherFName\":\"Erko\",\"TeacherLName\":"Abdurahman\",\"EmployeeNumber\":\"123456\",\"HireDate\":\"11-24-2023\",\"Salary\":\"123\"}"http://localhost:64406/api/TeacherData/AddTeacher
+
+curl -H "Content-Type: application/json" -d @teacher.json http://localhost:64406/api/TeacherData/AddTeacher  
+
+curl -H "Content-Type: application/json" -d @student.json http://localhost:64406/api/StudentData/AddStudent
+
+curl -H "Content-Type: application/json" -d @class.json http://localhost:64406/api/ClassData/AddClass

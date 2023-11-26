@@ -14,5 +14,7 @@ namespace School_Project.Models
         public string EmployeNumber;
         public DateTime HireDate;
         public decimal Salary;
+
+        public Teacher() { }
     }
 }
