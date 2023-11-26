@@ -4,8 +4,8 @@
 }
 
 <h2>New Class</h2>
-
-<form method="POST" action="/Class/Create">
+<!--form to create a new entry-->
+<form name = "NewClass" method="POST" action="/Class/Create">
     <div>
         <label for="ClassCode">Class Code:</label>
         <input type="text" id="ClassCode" name="ClassCode" />
@@ -30,3 +30,76 @@
         <input type="submit" value="Create Class"/>
     </div>
 </form>
+
+<script>
+    //On window load it loads this function
+    window.onload = function () {
+        //this variable while handle the form so I can be specific with the input im looking for VS doing getElementByID() every single time
+        var formHandle = document.forms.NewClass;
+        //function to process form and validate information
+        function processForm() {
+            var classCodeValue = formHandle.ClassCode;
+            var teacherIDValue = formHandle.TeacherID;
+            var startValue = formHandle.StartDate;
+            var finishValue = formHandle.FinishDate;
+            var classNameValue = formHandle.ClassName;
+            //below is a set of If and Else statments to see if the input is an empty string, if so it puts the respective one in focus and highlights it red.
+            //if the form is filled in then it will return back to normal and continue on
+            if (classCodeValue.value === "") {
+                classCodeValue.style.background = "red";
+                classCodeValue.style.color = "white";
+                classCodeValue.focus();
+                return false;
+            }
+            else {
+                classCodeValue.style.background = "white";
+                classCodeValue.style.color = "black";
+            }
+            if (teacherIDValue.value === "") {
+                teacherIDValue.style.background = "red";
+                teacherIDValue.style.color = "white";
+                teacherIDValue.focus();
+                return false;
+            }
+            else {
+                teacherIDValue.style.background = "white";
+                teacherIDValue.style.color = "black";
+            }
+            if (startValue.value === "") {
+                startValue.style.background = "red";
+                startValue.style.color = "white";
+                startValue.focus();
+                return false;
+            }
+            else {
+                startValue.style.background = "white";
+                startValue.style.color = "black";
+            }
+            if (finishValue.value === "") {
+                finishValue.style.background = "red";
+                finishValue.style.color = "white";
+                finishValue.focus();
+                return false;
+            }
+            else {
+                finishValue.style.background = "white";
+                finishValue.style.color = "black";
+            }
+            if (classNameValue.value === "") {
+                classNameValue.style.background = "red";
+                classNameValue.style.color = "white";
+                classNameValue.focus();
+                return false;
+            }
+            else {
+                classNameValue.style.background = "white";
+                classNameValue.style.color = "black";
+            }
+            return true;
+        }
+        //when the form is submitted it calls the function that contains the form validation
+        //each time its submitted it checks that all sections are filled in, if one isnt it will highlight red and will stop you from proceeding
+        formHandle.onsubmit = processForm;
+
+    }
+</script>

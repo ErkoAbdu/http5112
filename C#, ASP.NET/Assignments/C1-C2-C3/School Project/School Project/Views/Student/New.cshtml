@@ -4,8 +4,8 @@
 }
 
 <h2>New Student</h2>
-
-<form method="POST" action="/Student/Create">
+<!--form to create a new entry-->
+<form name="NewStudent" method="POST" action="/Student/Create">
     <div>
         <label for="StudentFName">Student First Name:</label>
         <input type="text" id="StudentFName" name="StudentFName" />
@@ -23,6 +23,68 @@
         <input type="date" id="EnrolDate" name="EnrolDate" />
     </div>
     <div>
-        <input type="submit" value="Create Student"/>
+        <input type="submit" value="Create Student" />
     </div>
 </form>
+
+<script>
+    //On window load it loads this function
+    window.onload = function () {
+        //this variable while handle the form so I can be specific with the input im looking for VS doing getElementByID() every single time
+        var formHandle = document.forms.NewStudent;
+        //function to process form and validate information
+        function processForm() {
+            var fNameValue = formHandle.StudentFName;
+            var lNameValue = formHandle.StudentLName;
+            var studentNumValue = formHandle.StudentNumber;
+            var enrolValue = formHandle.EnrolDate;
+            //below is a set of If and Else statments to see if the input is an empty string, if so it puts the respective one in focus and highlights it red.
+            //if the form is filled in then it will return back to normal and continue on
+            if (fNameValue.value === "") {
+                fNameValue.style.background = "red";
+                fNameValue.style.color = "white";
+                fNameValue.focus();
+                return false;
+            }
+            else {
+                fNameValue.style.background = "white";
+                fNameValue.style.color = "black";
+            }
+            if (lNameValue.value === "") {
+                lNameValue.style.background = "red";
+                lNameValue.style.color = "white";
+                lNameValue.focus();
+                return false;
+            }
+            else {
+                lNameValue.style.background = "white";
+                lNameValue.style.color = "black";
+            }
+            if (studentNumValue.value === "") {
+                studentNumValue.style.background = "red";
+                studentNumValue.style.color = "white";
+                studentNumValue.focus();
+                return false;
+            }
+            else {
+                studentNumValue.style.background = "white";
+                studentNumValue.style.color = "black";
+            }
+            if (enrolValue.value === "") {
+                enrolValue.style.background = "red";
+                enrolValue.style.color = "white";
+                enrolValue.focus();
+                return false;
+            }
+            else {
+                enrolValue.style.background = "white";
+                enrolValue.style.color = "black";
+            }
+            return true;
+        }
+        //when the form is submitted it calls the function that contains the form validation
+        //each time its submitted it checks that all sections are filled in, if one isnt it will highlight red and will stop you from proceeding
+        formHandle.onsubmit = processForm;
+
+    }
+</script>

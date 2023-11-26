@@ -6,6 +6,7 @@
 
 <div id="containershow">
     <nav>
+        <!--Option to cancel and go back to show-->
         <a class="navlink" href="/Teacher/Show/@Model.TeacherId">Cancel</a>
     </nav>
     <h2>Are you sure that you want to delete @Model.TeacherFName @Model.TeacherLName?</h2>
@@ -16,6 +17,7 @@
         <li>Date of Hire: @Model.HireDate</li>
         <li>Salary: @Model.Salary</li>
     </ul>
+    <!--runs delete query in data controller removing the entry-->
     <form method="POST" action="/Teacher/Delete/@Model.TeacherId">
         <button class="dellbtn">Confirm Delete</button>
     </form>

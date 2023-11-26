@@ -4,7 +4,7 @@
 }
 
 
-
+<!--lists mnore specified information on entry selected-->
 <div id="containershow">
     <h2>@Model.ClassCode - @Model.ClassName</h2>
     <ul>
@@ -14,6 +14,7 @@
         <li><strong>Finish Date: </strong>@Model.FinishDate.ToString("MMMM-dd-yyyy")</li>
     </ul>
     <nav>
+        <!--link to either go back to list or delete entry which takes to another page-->
         <a class="navlink" href="/Class/List">Back to Class List</a>
         <a class="dellink" href="/Class/DeleteConfirm/@Model.ClassId">Delete</a>
     </nav>

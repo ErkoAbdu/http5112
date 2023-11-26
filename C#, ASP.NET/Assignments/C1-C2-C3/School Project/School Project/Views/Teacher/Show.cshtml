@@ -4,7 +4,7 @@
 }
 
 
-
+<!--lists mnore specified information on entry selected-->
 <div id="containershow">
     <h2>@Model.TeacherFName @Model.TeacherLName</h2>
     <ul>
@@ -14,8 +14,8 @@
         <li><strong>Salary: </strong>@Model.Salary</li>
     </ul>
     <nav>
+        <!--link to either go back to list or delete entry which takes to another page-->
         <a class="navlink" href="/Teacher/List">Back to Teacher List</a>
         <a class="dellink" href="/Teacher/Deleteconfirm/@Model.TeacherId">Delete</a>
     </nav>
 </div>
-

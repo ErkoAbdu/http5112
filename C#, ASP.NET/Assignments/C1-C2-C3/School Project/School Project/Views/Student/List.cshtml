@@ -4,7 +4,7 @@
 }
 
 <h2>List of Students</h2>
-
+<!--Links to other lists as well as link to create a new entry-->
 <h3><a href="/Teacher/List">Teacher List</a></h3>
 <h3><a href="/Class/List">Class List</a></h3>
 <h3><a href="/Stdent/New">Create New Student</a></h3>
@@ -13,7 +13,7 @@
     <input type="text" name="SearchKey" />
     <input type="submit" value="Search" />
 </form>
-
+<!--loops for each entry to show entire list-->
 @foreach (var student in Model)
 {
 
