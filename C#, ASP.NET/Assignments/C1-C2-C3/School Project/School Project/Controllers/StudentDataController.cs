@@ -15,10 +15,10 @@ namespace School_Project.Controllers
         private SchoolDbContext School = new SchoolDbContext();
 
         /// <summary>
-        /// Returns list of Students in the database
+        /// Gets a list of students 
         /// </summary>
-        /// <example>GET api/StudentData/ListStudent</example>
-        /// <returns>List of Students (first and last names)</returns>
+        /// <param name="SearchKey"> used to search for specific students</param>
+        /// <returns>displays list of all students within the database</returns>
 
         [HttpGet]
         [Route("api/StudentData/ListStudents/{SearchKey?}")]
@@ -69,7 +69,12 @@ namespace School_Project.Controllers
             //Return the final list of Student names
             return Students;
         }
-
+        /// <summary>
+        /// gets a specific student by their id
+        /// </summary>
+        /// <param name="id">this is the id to find the student</param>
+        /// <example>/Student/Show/34</example>
+        /// <returns>Erko Abdurahman</returns>
         [HttpGet]
         public Student FindStudent(int id)
         {
@@ -85,7 +90,8 @@ namespace School_Project.Controllers
             MySqlCommand cmd = Conn.CreateCommand();
 
             //SQL QUERY
-            cmd.CommandText = "Select * from students where studentid =" + id;
+            cmd.CommandText = "Select * from students where studentid = @id";
+            cmd.Parameters.AddWithValue("@id", id);
 
             //Gather Result Set of Query into a variable
             MySqlDataReader ResultSet = cmd.ExecuteReader();
@@ -108,10 +114,11 @@ namespace School_Project.Controllers
             return NewStudent;
         }
         /// <summary>
-        /// 
+        /// deletes specified student by their id
         /// </summary>
-        /// <param name="id"></param>
-        /// <example>POST: /api/StudentData/DeleteStudent/3</example>
+        /// <param name="id"> identifies the student that is going to be deleted</param>
+        /// <example>/Student/Show/34</example>
+        /// <returns>id 34 student is deleted</returns>
         [HttpPost]
         public void DeleteStudent(int id)
         {
@@ -133,7 +140,12 @@ namespace School_Project.Controllers
 
             Conn.Close();
         }
-
+        /// <summary>
+        /// adds a student to the database
+        /// </summary>
+        /// <param name="NewStudent">object to hold new student data</param>
+        /// <example>Student/New/</example>
+        /// <returns>newly created student with respective information tied to it</returns>
         [HttpPost]
         public void AddStudent([FromBody]Student NewStudent)
         {

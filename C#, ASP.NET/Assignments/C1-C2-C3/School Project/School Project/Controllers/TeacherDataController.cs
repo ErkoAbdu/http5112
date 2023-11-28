@@ -15,10 +15,10 @@ namespace School_Project.Controllers
         private SchoolDbContext School = new SchoolDbContext();
 
         /// <summary>
-        /// Returns list of Teachers in the database
+        /// Gets a list of treachers 
         /// </summary>
-        /// <example>GET api/TeacherData/ListTeachers</example>
-        /// <returns>List of Teachers (first and last names)</returns>
+        /// <param name="SearchKey"> used to search for specific teacher</param>
+        /// <returns>displays list of all teachers within the database</returns>
 
         [HttpGet]
         [Route("api/TeacherData/ListTeachers/{SearchKey?}")]
@@ -72,6 +72,12 @@ namespace School_Project.Controllers
             //Return the final list of Teacher names
             return Teachers;
         }
+        /// <summary>
+        /// gets a specific teacher by their id
+        /// </summary>
+        /// <param name="id">this is the id to find the teacher</param>
+        /// <example>/Teacher/Show/12</example>
+        /// <returns>Jefe The Cat</returns>
         [HttpGet]
         public Teacher FindTeacher(int id)
         {
@@ -87,7 +93,8 @@ namespace School_Project.Controllers
             MySqlCommand cmd = Conn.CreateCommand();
 
             //SQL QUERY
-            cmd.CommandText = "Select * from teachers where teacherid = " + id;
+            cmd.CommandText = "Select * from teachers where teacherid = @id";
+            cmd.Parameters.AddWithValue("@id", id);
 
             //Gather Result Set of Query into a variable
             MySqlDataReader ResultSet = cmd.ExecuteReader();
@@ -114,10 +121,11 @@ namespace School_Project.Controllers
         }
 
         /// <summary>
-        /// 
+        /// deletes specified teacher by their id
         /// </summary>
-        /// <param name="id"></param>
-        /// <example>POST: /api/TeacherData/DeleteTeacher/3</example>
+        /// <param name="id"> identifies the teacher that is going to be deleted</param>
+        /// <example>/Teacher/Show/12</example>
+        /// <returns>id 12 teacher is deleted</returns>
         [HttpPost]
         public void DeleteTeacher(int id)
         {
@@ -139,7 +147,12 @@ namespace School_Project.Controllers
 
             Conn.Close();
         }
-
+        /// <summary>
+        /// adds a teacher to the database
+        /// </summary>
+        /// <param name="NewTeacher">object to hold new teacher data</param>
+        /// <example>Teacher/New/</example>
+        /// <returns>newly created teacher with respective information tied to it</returns>
         [HttpPost]
         public void AddTeacher([FromBody]Teacher NewTeacher)
         {

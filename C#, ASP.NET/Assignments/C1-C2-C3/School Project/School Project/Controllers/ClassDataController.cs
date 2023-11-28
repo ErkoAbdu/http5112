@@ -15,6 +15,12 @@ namespace School_Project.Controllers
     {
         private SchoolDbContext School = new SchoolDbContext();
 
+        /// <summary>
+        /// Gets a list of classes 
+        /// </summary>
+        /// <param name="SearchKey"> used to search for specific classes</param>
+        /// <returns>displays list of all classes within the database</returns>
+
         [HttpGet]
         [Route("api/ClassesData/ListClasses/{SearchKey?}")]
         public IEnumerable<Class> ListClasses(string SearchKey=null)
@@ -66,7 +72,12 @@ namespace School_Project.Controllers
             //Return the final list of Class names
             return Classes;
         }
-
+        /// <summary>
+        /// gets a specific class by its id
+        /// </summary>
+        /// <param name="id">this is the id to find the class</param>
+        /// <example>/Class/Show/14</example>
+        /// <returns>EA24 - Erkos Test</returns>
         [HttpGet]
         public Class FindClass(int id)
         {
@@ -82,7 +93,8 @@ namespace School_Project.Controllers
             MySqlCommand cmd = Conn.CreateCommand();
 
             //SQL QUERY
-            cmd.CommandText = "Select * from classes where classid = " + id;
+            cmd.CommandText = "Select * from classes where classid = @id";
+            cmd.Parameters.AddWithValue("@id", id);
 
             //Gather Result Set of Query into a variable
             MySqlDataReader ResultSet = cmd.ExecuteReader();
@@ -111,10 +123,11 @@ namespace School_Project.Controllers
         }
 
         /// <summary>
-        /// 
+        /// deletes specified class by its id
         /// </summary>
-        /// <param name="id"></param>
-        /// <example>POST: /api/ClassesData/DeleteClasses/3</example>
+        /// <param name="id"> identifies the class that is going to be deleted</param>
+        /// <example>/Class/Show/14</example>
+        /// <returns>id 14 class is deleted</returns>
         [HttpPost]
         public void DeleteClass(int id)
         {
@@ -136,7 +149,12 @@ namespace School_Project.Controllers
 
             Conn.Close();
         }
-
+        /// <summary>
+        /// adds a class to the database
+        /// </summary>
+        /// <param name="NewClass">object to hold new class data</param>
+        /// <example>Teacher/New/</example>
+        /// <returns>newly created teacher with respective information tied to it</returns>
         [HttpPost]
         public void AddClass([FromBody] Class NewClass)
         {
