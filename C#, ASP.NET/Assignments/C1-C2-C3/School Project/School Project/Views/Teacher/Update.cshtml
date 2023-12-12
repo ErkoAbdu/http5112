@@ -1,0 +1,69 @@
+﻿@model School_Project.Models.Teacher
+@{
+    ViewBag.Title = "Update";
+}
+
+<!--form to update an  entry-->
+<div id="ContainerUpdate">
+    <h2 id="header">Update Teacher</h2>
+    <form name="UpdateTeacher" method="POST" action="/Teacher/Update/@Model.TeacherId">
+        <div>
+            <label for="TeacherFName">Teacher First Name:</label>
+            <input type="text" id="TeacherFName" name="TeacherFName" value="@Model.TeacherFName" />
+        </div>
+        <div>
+            <label for="TeacherLName">Teacher Last Name:</label>
+            <input type="text" id="TeacherLName" name="TeacherLName" value="@Model.TeacherLName" />
+        </div>
+        <div>
+            <label for="EmployeeNumber">Employee Number:</label>
+            <input type="text" id="EmployeeNumber" name="EmployeeNumber" value="@Model.EmployeNumber" />
+        </div>
+        <div>
+            <label for="HireDate">Hire Date:</label>
+            <input type="date" id="HireDate" name="HireDate" value="@Model.HireDate" />
+        </div>
+        <div>
+            <label for="Salary">Salary:</label>
+            <input type="number" id="Salary" name="Salary" value="@Model.Salary" />
+        </div>
+        <div>
+            <input type="submit" value="Update Teacher" />
+        </div>
+    </form>
+    <nav>
+        <a class="navlink" href="/Teacher/Show/@Model.TeacherId">Back</a>
+    </nav>
+</div>
+
+<script>
+
+    function UpdateTeacher(TeacherId) { 
+
+        var url = "http://localhost:64406/api/TeacherData/UpdateTeacher/" + TeacherId
+
+        var xhr = new XMLHttpRequest();
+        
+        var TeacherFName = document.getElementById("TeacherFName").value;
+        var TeacherLName = document.getElementById("TeacherLName").value;
+        var EmployeeNumber = document.getElementById("EmployeeNumber").value;
+        var HireDate = document.getElementById("HireDate").value;
+        var Salary = document.getElementById("Salary").value;
+
+        var TeacherData = {
+            "TeacherFName": TeacherFName,
+            "TeacherLName": TeacherLName,
+            "EmployeeNumber": EmployeeNumber,
+            "HireDate": HireDate,
+            "Salary": Salary
+        };
+        xhr.open("POST", url, true);
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.onreadystatechange = function () {
+            if (xhr.readystate == 4 && xhr.status == 200) {
+            }
+        }
+        xhr.send(JSON.stringify(TeacherData));
+    }
+
+</script>

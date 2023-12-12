@@ -95,6 +95,7 @@ namespace School_Project.Controllers
             //SQL QUERY
             cmd.CommandText = "Select * from teachers where teacherid = @id";
             cmd.Parameters.AddWithValue("@id", id);
+            cmd.Prepare();
 
             //Gather Result Set of Query into a variable
             MySqlDataReader ResultSet = cmd.ExecuteReader();
@@ -177,6 +178,33 @@ namespace School_Project.Controllers
             cmd.ExecuteNonQuery();
 
             Conn.Close();
+        }
+
+        public void UpdateTeacher(int id, [FromBody]Teacher TeacherInfo)
+        {
+            //Create an instance of a connection
+            MySqlConnection Conn = School.AccessDatabase();
+
+            //Open the connection between the web server and database
+            Conn.Open();
+
+            //Establish a new command (query) for our database
+            MySqlCommand cmd = Conn.CreateCommand();
+
+            //SQL QUERY
+            cmd.CommandText = "update teachers set teacherfname = @TeacherFName, teacherlname = @TeacherLName, employeenumber = @EmployeeNumber, hiredate = @HireDate, salary = @Salary where teacherid = @TeacherId";
+            cmd.Parameters.AddWithValue("@TeacherFName", TeacherInfo.TeacherFName);
+            cmd.Parameters.AddWithValue("@TeacherLName", TeacherInfo.TeacherLName);
+            cmd.Parameters.AddWithValue("@EmployeeNumber", TeacherInfo.EmployeNumber);
+            cmd.Parameters.AddWithValue("@HireDate", TeacherInfo.HireDate);
+            cmd.Parameters.AddWithValue("@Salary", TeacherInfo.Salary);
+            cmd.Parameters.AddWithValue("@TeacherId", id);
+            cmd.Prepare();
+
+            cmd.ExecuteNonQuery();
+
+            Conn.Close();
+
         }
     }
 }

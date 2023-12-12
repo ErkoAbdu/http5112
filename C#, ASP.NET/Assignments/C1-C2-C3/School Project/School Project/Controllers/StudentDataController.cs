@@ -92,6 +92,7 @@ namespace School_Project.Controllers
             //SQL QUERY
             cmd.CommandText = "Select * from students where studentid = @id";
             cmd.Parameters.AddWithValue("@id", id);
+            cmd.Prepare();
 
             //Gather Result Set of Query into a variable
             MySqlDataReader ResultSet = cmd.ExecuteReader();
@@ -169,6 +170,32 @@ namespace School_Project.Controllers
             cmd.ExecuteNonQuery();
 
             Conn.Close();
+        }
+
+        public void UpdateStudent(int id, [FromBody] Student StudentInfo)
+        {
+            //Create an instance of a connection
+            MySqlConnection Conn = School.AccessDatabase();
+
+            //Open the connection between the web server and database
+            Conn.Open();
+
+            //Establish a new command (query) for our database
+            MySqlCommand cmd = Conn.CreateCommand();
+
+            //SQL QUERY
+            cmd.CommandText = "update students set studentfname = @StudentFName, studentlname = @StudentLName, studentnumber = @StudentNumber, enroldate = @EnrolDate where studentid = @StudentId";
+            cmd.Parameters.AddWithValue("@StudentFName", StudentInfo.StudentFName);
+            cmd.Parameters.AddWithValue("@StudentLName", StudentInfo.StudentLName);
+            cmd.Parameters.AddWithValue("@StudentNumber", StudentInfo.StudentNumber);
+            cmd.Parameters.AddWithValue("@EnrolDate", StudentInfo.EnrolDate);
+            cmd.Parameters.AddWithValue("@StudentId", id);
+            cmd.Prepare();
+
+            cmd.ExecuteNonQuery();
+
+            Conn.Close();
+
         }
     }
 }
